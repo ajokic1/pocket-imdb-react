@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
-import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 
-import Home from './containers/Home';
 import './App.css';
 import AppLayout from './component/AppLayout';
 import store from './store/Store';
