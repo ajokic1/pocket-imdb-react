@@ -12,19 +12,19 @@ class AuthService extends ApiService {
     this.init();
   }
 
-  init = async () => {
+  init = () => {
     const token = this.getToken();
     const user = this.getUser();
 
     if (token && user) {
-      await this.setAuthorizationHeader();
+      this.setAuthorizationHeader();
 
       this.api.setUnauthorizedCallback(this.destroySession.bind(this));
     }
   };
 
-  setAuthorizationHeader = async () => {
-    const token = await this.getToken();
+  setAuthorizationHeader = () => {
+    const token = this.getToken();
     if (token) {
       this.api.attachHeaders({
         Authorization: `Bearer ${token.access_token}`
@@ -32,9 +32,9 @@ class AuthService extends ApiService {
     }
   };
 
-  createSession = async user => {
-    await localStorage.setItem('user', JSON.stringify(user));
-    await this.setAuthorizationHeader();
+  createSession = user => {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.setAuthorizationHeader();
   };
 
   destroySession = () => {
@@ -44,7 +44,7 @@ class AuthService extends ApiService {
 
   login = async loginData => {
     const { data } = await this.apiClient.post(ENDPOINTS.LOGIN, loginData);
-    await this.createSession(data);
+    this.createSession(data);
     return data;
   };
 
@@ -56,7 +56,7 @@ class AuthService extends ApiService {
 
   logout = async () => {
     const { data } = await this.apiClient.post(ENDPOINTS.LOGOUT);
-    await this.destroySession();
+    this.destroySession();
     return { ok: true, data };
   };
 
