@@ -32,10 +32,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = () => {
-  return {
-    logOut,
-  };
+const mapDispatchToProps = {
+  logOut
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserControls));
