@@ -8,12 +8,20 @@ export function* userLogin({ payload }) {
   try {
     yield call(AuthService.login, payload);
 
-    yield put(authUser(true));
-    yield put(push('/home'));
+    yield put(authUser(payload));
+    yield put(push('/'));
     yield put(go());
   } catch (error) {
     yield put(loginError(true));
   }
+}
+
+export function* userLogout() {
+  yield call(AuthService.logout);
+
+  yield put(authUser(false));
+  yield put(push('/login'));
+  yield put(go());
 }
 
 export function* userRegister({ payload }) {

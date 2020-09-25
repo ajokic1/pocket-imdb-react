@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UserControls from "./UserControls";
 
 function Navbar() {
   return (
@@ -23,20 +24,7 @@ function Navbar() {
         <ul className="navbar-nav mr-auto"></ul>
         <div>
           <div className="text-light mb-3 text-right">
-            <Link
-              to="/login"
-              className="btn btn-outline-light mr-2"
-              type="button"
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="btn btn-outline-light"
-              type="button"
-            >
-              Register
-            </Link>
+            <UserControls />
           </div>
           <form className="form-inline">
             <input

@@ -7,11 +7,12 @@ function MovieList({ movies }) {
   const renderMovies = () => {
     return movies.map((movie) => (
       <Link
+        key={movie.id} 
         className="text-dark text-decoration-none"
         to={`/movie/${movie.id}`}
       >
         <Card>
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard movie={movie} />
         </Card>
       </Link>
     ));
