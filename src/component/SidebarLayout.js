@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "../component/Card";
-import Sidebar from "../component/Sidebar";
+import Card from "./Card";
+import Sidebar from "./Sidebar";
 
 function SidebarLayout({ top = () => {}, left, sidebarContents }) {
   return (

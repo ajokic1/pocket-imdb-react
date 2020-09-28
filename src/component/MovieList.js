@@ -9,7 +9,7 @@ function MovieList({ movies, page }) {
       <Link
         key={movie.id}
         className="text-dark text-decoration-none"
-        to={`/movie/${page}/${movie.id}`}
+        to={`/movies/${page}/${movie.id}`}
       >
         <Card>
           <MovieCard movie={movie} />

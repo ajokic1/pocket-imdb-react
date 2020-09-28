@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="navbar py-3 navbar-expand-lg navbar-dark bg-dark">
-      <Link className="h2 text-light strong" to="/">
+      <Link className="h2 text-light strong" to="/movies">
         <strong>PocketIMDB</strong>
       </Link>
       <button

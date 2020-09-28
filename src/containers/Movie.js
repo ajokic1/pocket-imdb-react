@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import MovieInfo from "../component/MovieInfo";
 import { getMovies } from "../store/actions/MovieActions";
-import SidebarLayout from "./SidebarLayout";
+import SidebarLayout from "../component/SidebarLayout";
 import RelatedMovies from "../component/RelatedMovies";
 
 function Movie({ movies, getMovies, match }) {
