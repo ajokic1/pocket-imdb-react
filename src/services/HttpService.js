@@ -1,10 +1,13 @@
-import axios from 'axios';
-import config from '../config';
+import axios from "axios";
+import config from "../config";
 
 class HttpService {
   constructor(options = {}) {
     this.client = axios.create(options);
-    this.client.interceptors.response.use(this.handleSuccessResponse, this.handleErrorResponse);
+    this.client.interceptors.response.use(
+      this.handleSuccessResponse.bind(this),
+      this.handleErrorResponse.bind(this)
+    );
     this.unauthorizedCallback = () => {};
   }
 
@@ -13,7 +16,7 @@ class HttpService {
   }
 
   removeHeaders(headerKeys) {
-    headerKeys.forEach(key => delete this.client.defaults.headers[key]);
+    headerKeys.forEach((key) => delete this.client.defaults.headers[key]);
   }
 
   handleSuccessResponse(response) {
@@ -41,7 +44,7 @@ class HttpService {
 }
 
 const options = {
-  baseURL: config.API_BASE_URL
+  baseURL: config.API_BASE_URL,
 };
 const httpService = new HttpService(options);
 
