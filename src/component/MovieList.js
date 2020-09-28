@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 import MovieCard from "../component/MovieCard";
 import Card from "./Card";
 
-function MovieList({ movies }) {
+function MovieList({ movies, page }) {
   const renderMovies = () => {
     return movies.map((movie) => (
       <Link
+        key={movie.id}
         className="text-dark text-decoration-none"
-        to={`/movie/${movie.id}`}
+        to={`/movie/${page}/${movie.id}`}
       >
         <Card>
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard movie={movie} />
         </Card>
       </Link>
     ));

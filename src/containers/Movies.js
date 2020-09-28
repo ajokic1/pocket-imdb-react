@@ -15,19 +15,22 @@ function Movies({ movies, getMovies }) {
   if (!movies) return <div></div>;
 
   return (
-    <div className="col-md-8 m-0 px-3 h-100 overflow-auto">
+    <React.Fragment>
       {movies.loading && (
         <div className="text-center py-5">
           <Loader type="Puff" color="#00BFFF" height={100} width={100} />
-        </div> 
+        </div>
       )}
       {!movies.loading && movies.data && (
         <div>
-          <MovieList movies={movies.data ? movies.data : []} />
+          <MovieList
+            page={movies.current_page}
+            movies={movies.data ? movies.data : []}
+          />
         </div>
       )}
       <PaginationControl data={movies} getData={getMovies} />
-    </div>
+    </React.Fragment>
   );
 }
 

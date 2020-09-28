@@ -20,6 +20,7 @@ function PaginationControl({ data, getData }) {
 
   const pages = createPageNumbersArray().map((page) => (
     <span
+      key={page}
       onClick={() => getData(page)}
       className={
         "page-button " +

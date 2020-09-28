@@ -28,7 +28,7 @@ class AppLayout extends React.Component {
         {this.props.user ? (
           <div className="h-100">
             <Route exact path="/" component={Home} />
-            <Route exact path="/movie/:id" component={Movie} />
+            <Route exact path="/movie/:page/:id" component={Movie} />
           </div>
         ) : (
           <div>
