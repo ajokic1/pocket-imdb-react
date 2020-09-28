@@ -1,0 +1,15 @@
+.page-button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: 1px solid #dee2e6;
+}
+.page-button:hover {
+  background-color: white;
+}
+
+.page-button-selected {
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid gray;
+}
