@@ -1,12 +1,12 @@
 import ApiService from './ApiService';
 
 const ENDPOINTS = {
-  MOVIES: '/api/movies?page=:page'
+  MOVIES: '/api/movies'
 };
 
 class MovieService extends ApiService {
-  getMovies = (page=1) => {
-    return this.apiClient.get(ENDPOINTS.MOVIES.replace(":page", page));
+  getMovies = (params) => {
+    return this.apiClient.get(ENDPOINTS.MOVIES, { params });
   };
 }
 
