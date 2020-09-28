@@ -26,7 +26,7 @@ class AppLayout extends React.Component {
       <React.Fragment>
         <Navbar />
         {this.props.user ? (
-          <div>
+          <div className="h-100">
             <Route exact path="/" component={Home} />
             <Route exact path="/movie/:id" component={Movie} />
           </div>

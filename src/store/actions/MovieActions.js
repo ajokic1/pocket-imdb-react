@@ -1,14 +1,22 @@
-import { GET_MOVIES, SET_MOVIES } from './ActionTypes';
+import { GET_MOVIES, SET_LOADING, SET_MOVIES } from "./ActionTypes";
 
-export const getMovies = () => {
+export const getMovies = (payload) => {
   return {
-    type: GET_MOVIES
+    type: GET_MOVIES,
+    payload,
   };
 };
 
-export const setMovies = payload => {
+export const setMovies = (payload) => {
   return {
     type: SET_MOVIES,
-    payload
+    payload,
+  };
+};
+
+export const setLoading = (payload) => {
+  return {
+    type: SET_LOADING,
+    payload,
   };
 };
