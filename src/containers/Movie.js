@@ -2,17 +2,18 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import MovieInfo from "../component/MovieInfo";
-import { getMovies } from "../store/actions/MovieActions";
+import { getMovies, visitMovie } from "../store/actions/MovieActions";
 import SidebarLayout from "../component/SidebarLayout";
 import RelatedMovies from "../component/RelatedMovies";
 
-function Movie({ movies, getMovies, match }) {
+function Movie({ movies, getMovies, visitMovie, match }) {
   const movie = movies
     ? movies.data.find((movie) => movie.id == match.params.id)
     : {};
 
   useEffect(() => {
     getMovies(match.params.page);
+    visitMovie(movie.id);
   }, []);
 
   return (
@@ -31,6 +32,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   getMovies,
+  visitMovie,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Movie));

@@ -5,6 +5,7 @@ const ENDPOINTS = {
   LIKE: '/api/movies/:id/like',
   DISLIKE: '/api/movies/:id/dislike',
   UNLIKE: '/api/movies/:id/unlike',
+  VISIT: '/api/movies/:id/visit',
 };
 
 class MovieService extends ApiService {
@@ -18,6 +19,10 @@ class MovieService extends ApiService {
     else if (value === 0) endpoint = ENDPOINTS.UNLIKE;
     else endpoint = ENDPOINTS.DISLIKE;
     return this.apiClient.post(endpoint.replace(':id', id));
+  }
+
+  visit = (id) => {
+    return this.apiClient.post(ENDPOINTS.VISIT.replace(':id', id));
   }
 }
 

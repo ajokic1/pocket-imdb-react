@@ -6,6 +6,7 @@ import {
   SET_MOVIES,
   RATE_MOVIE,
   UPDATE_MOVIE,
+  VISIT_MOVIE,
 } from "./ActionTypes";
 
 export const getMovies = (page) => {
@@ -54,5 +55,12 @@ export const rateMovie = (id, value) => {
   return {
     type: RATE_MOVIE,
     payload: { id, value },
+  };
+};
+
+export const visitMovie = (id) => {
+  return {
+    type: VISIT_MOVIE,
+    payload: id
   };
 };

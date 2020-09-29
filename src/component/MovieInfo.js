@@ -8,7 +8,12 @@ function MovieInfo({ movie }) {
     <React.Fragment>
       <h1>{movie.title}</h1>
       <h3>{movie.genre}</h3>
-      <div><Likes movie={movie} /></div>
+      <div className="mb-3">
+        <span className="text-muted">Viewed {movie.visits} times</span>
+      </div>
+      <div>
+        <Likes movie={movie} />
+      </div>
       <div className="mt-5 d-flex flex-row">
         <div>
           <img
