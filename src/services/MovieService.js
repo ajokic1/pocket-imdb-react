@@ -6,6 +6,7 @@ const ENDPOINTS = {
 
 class MovieService extends ApiService {
   getMovies = (params) => {
+    console.log(params);
     return this.apiClient.get(ENDPOINTS.MOVIES, { params });
   };
 }

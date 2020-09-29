@@ -1,4 +1,4 @@
-import { GET_MOVIE, SEARCH_MOVIES, GET_MOVIES, SET_LOADING, SET_MOVIES } from "./ActionTypes";
+import { GET_MOVIE, SEARCH_MOVIES, GET_MOVIES, SET_LOADING, SET_MOVIES, FILTER_MOVIES } from "./ActionTypes";
 
 export const getMovies = page => {
   return {
@@ -34,3 +34,10 @@ export const getMovie = (payload) => {
     payload,
   };
 };
+
+export const filterMovies = filters => {
+  return {
+    type: FILTER_MOVIES,
+    payload: filters
+  }
+}
