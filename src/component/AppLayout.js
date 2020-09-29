@@ -1,14 +1,12 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-
 import Login from "../containers/auth/Login";
 import Register from "../containers/auth/Register";
-import Home from "../containers/Home";
 import { authUser } from "../store/actions/AuthActions";
 import Navbar from "./Navbar";
-import Movie from "../containers/Movie";
+import Movies from "../containers/Movies";
 
 class AppLayout extends React.Component {
   componentDidUpdate(prevProps) {
@@ -27,8 +25,8 @@ class AppLayout extends React.Component {
         <Navbar />
         {this.props.user ? (
           <div className="h-100">
-            <Route exact path="/" component={Home} />
-            <Route exact path="/movie/:id" component={Movie} />
+            <Route exact path="/"><Redirect to="/movies"/></Route>
+            <Route path="/movies" component={Movies} />
           </div>
         ) : (
           <div>
