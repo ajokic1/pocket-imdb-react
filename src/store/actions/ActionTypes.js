@@ -15,5 +15,4 @@ export const GET_MOVIES = 'GET_MOVIES';
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_LOADING = 'SET_LOADING';
 export const GET_MOVIE = 'GET_MOVIE';
-export const SEARCH_MOVIES = 'SEARCH_MOVIES';
 export const FILTER_MOVIES = 'FILTER_MOVIES';

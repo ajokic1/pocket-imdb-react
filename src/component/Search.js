@@ -1,16 +1,16 @@
 import { debounce } from "lodash";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { searchMovies } from "../store/actions/MovieActions";
+import { filterMovies } from "../store/actions/MovieActions";
 
-function Search({ searchMovies }) {
+function Search({ filterMovies }) {
   const [search, setSearch] = useState("");
   
   function handleSearch(event) {
     const value = event.target.value
     setSearch(value);
     (debounce(() => {
-      searchMovies(value);
+      filterMovies({ search: value });
     }, 750))();
   }
 
@@ -29,7 +29,7 @@ function Search({ searchMovies }) {
 }
 
 const mapDispatchToProps = {
-  searchMovies,
+  filterMovies,
 };
 
 export default connect(null, mapDispatchToProps)(Search);
