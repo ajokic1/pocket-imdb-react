@@ -1,4 +1,4 @@
-import { SEARCH_MOVIES, SET_LOADING, SET_MOVIES } from '../actions/ActionTypes';
+import { SEARCH_MOVIES, SET_LOADING, SET_MOVIES, UPDATE_MOVIE } from '../actions/ActionTypes';
 
 const initialState = {
   loading: false,
@@ -8,6 +8,7 @@ const initialState = {
   total: 0,
   data: []
 };
+
 const movieReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MOVIES:
@@ -16,6 +17,10 @@ const movieReducer = (state = initialState, action) => {
       return { ...state, loading: action.payload };
     case SEARCH_MOVIES:
       return { ...state, search: action.payload };
+    case UPDATE_MOVIE:
+      const newData = state.data.map(movie => 
+        movie.id == action.payload.id ? action.payload : movie);
+      return { ...state, data: newData };
     default:
       return state;
   }

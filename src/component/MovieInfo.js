@@ -1,4 +1,5 @@
 import React from "react";
+import Likes from "./Likes";
 
 function MovieInfo({ movie }) {
   if (!movie) return <div />;
@@ -7,7 +8,7 @@ function MovieInfo({ movie }) {
     <React.Fragment>
       <h1>{movie.title}</h1>
       <h3>{movie.genre}</h3>
-      <div>Likes/dislikes</div>
+      <div><Likes movie={movie} /></div>
       <div className="mt-5 d-flex flex-row">
         <div>
           <img
