@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 import UserControls from "./UserControls";
 
 function Navbar() {
@@ -26,14 +27,7 @@ function Navbar() {
           <div className="text-light mb-3 text-right">
             <UserControls />
           </div>
-          <form className="form-inline">
-            <input
-              className="form-control"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-          </form>
+          <Search/>
         </div>
       </div>
     </nav>
