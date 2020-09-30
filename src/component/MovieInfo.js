@@ -1,5 +1,6 @@
 import React from "react";
 import Likes from "./Likes";
+import Loader from "./Loader";
 
 function MovieInfo({ movie }) {
   if (!movie) return <div />;

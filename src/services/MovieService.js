@@ -10,6 +10,7 @@ const ENDPOINTS = {
 
 class MovieService extends ApiService {
   getMovies = (params) => {
+    console.log(params);
     return this.apiClient.get(ENDPOINTS.MOVIES, { params });
   };
 
@@ -18,6 +19,7 @@ class MovieService extends ApiService {
     if (value === 1) endpoint = ENDPOINTS.LIKE;
     else if (value === 0) endpoint = ENDPOINTS.UNLIKE;
     else endpoint = ENDPOINTS.DISLIKE;
+    
     return this.apiClient.post(endpoint.replace(':id', id));
   }
   

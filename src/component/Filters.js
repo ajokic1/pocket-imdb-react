@@ -32,7 +32,7 @@ function Filters({ getGenres, filterMovies, genres }) {
 
 const mapStateToProps = (state) => {
   return {
-    genres: state.genre,
+    genres: state.genres,
   };
 };
 

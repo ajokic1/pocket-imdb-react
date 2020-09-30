@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MOVIES } from "../constants/routes";
 import UserControls from "./UserControls";
+import Search from "./Search";
 
 function Navbar() {
   return (

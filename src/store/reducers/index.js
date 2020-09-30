@@ -13,5 +13,6 @@ export default history =>
     movie: singleMovieReducer,
     errors: errorReducer,
     movies: movieReducer,
+    genres: genreReducer,
     router: connectRouter(history)
   });

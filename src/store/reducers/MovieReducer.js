@@ -1,9 +1,8 @@
-import { FILTER_MOVIES, SEARCH_MOVIES, SET_LOADING, SET_MOVIES, UPDATE_MOVIE } from '../actions/ActionTypes';
+import { FILTER_MOVIES, SET_LOADING, SET_MOVIES, UPDATE_MOVIE } from '../actions/ActionTypes';
 
 const initialState = {
   loading: false,
   filters: {},
-  search: "",
   current_page: 1,
   last_page: 1,
   total: 0,
@@ -17,8 +16,6 @@ const movieReducer = (state = initialState, action) => {
       return { ...state, loading: action.payload };
     case FILTER_MOVIES:
       return { ...state, filters: { ...state.filters, ...action.payload } }
-    case SEARCH_MOVIES:
-      return { ...state, search: action.payload };
     case UPDATE_MOVIE:
       const newData = state.data.map(movie => 
         movie.id == action.payload.id ? action.payload : movie);

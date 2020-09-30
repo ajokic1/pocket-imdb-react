@@ -1,25 +1,17 @@
 import {
   GET_MOVIE,
-  SEARCH_MOVIES,
   GET_MOVIES,
   SET_LOADING,
   SET_MOVIES,
   RATE_MOVIE,
   UPDATE_MOVIE,
-  SEARCH_MOVIES,
+  FILTER_MOVIES,
 } from "./ActionTypes";
 
 export const getMovies = (page) => {
   return {
     type: GET_MOVIES,
     payload: page,
-  };
-};
-
-export const searchMovies = (search) => {
-  return {
-    type: SEARCH_MOVIES,
-    payload: search,
   };
 };
 
@@ -57,3 +49,10 @@ export const rateMovie = (id, value) => {
     payload: { id, value },
   };
 };
+
+export const filterMovies = filters => {
+  return {
+    type: FILTER_MOVIES,
+    payload: filters
+  }
+}
