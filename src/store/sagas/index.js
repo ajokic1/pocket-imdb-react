@@ -8,6 +8,8 @@ import {
   FILTER_MOVIES,
   RATE_MOVIE,
   GET_MOVIE,
+  GET_COMMENTS,
+  LOAD_MORE_COMMENTS,
 } from "../actions/ActionTypes";
 import { userLogin, userRegister, userLogout } from "./AuthSagas";
 import { movieGet } from "./SingleMovieSagas";
@@ -24,5 +26,7 @@ export default function* rootSaga() {
     takeLatest(RATE_MOVIE, movieRate),
     takeLatest(GET_GENRES, genresGet),
     takeLatest(FILTER_MOVIES, moviesFilter),
+    takeLatest(GET_COMMENTS, commentsGet),
+    takeLatest(LOAD_MORE_COMMENTS, commentsLoadMore),
   ]);
 }

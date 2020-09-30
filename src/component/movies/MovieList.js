@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MovieCard from "../component/MovieCard";
-import { SINGLE_MOVIE } from "../constants/routes";
+import MovieCard from "./MovieCard";
+import { SINGLE_MOVIE } from "../../constants/routes";
 import Card from "./Card";
 
 function MovieList({ movies, page }) {

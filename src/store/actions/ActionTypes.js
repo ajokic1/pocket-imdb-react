@@ -22,3 +22,8 @@ export const RATE_MOVIE = 'RATE_MOVIE';
 export const GET_MOVIE = 'GET_MOVIE';
 export const SET_MOVIE = 'SET_MOVIE';
 export const SET_MOVIE_LOADING = 'SET_MOVIE_LOADING';
+
+export const GET_COMMENTS = 'GET_COMMENTS';
+export const LOAD_MORE_COMMENTS = 'LOAD_MORE_COMMENTS';
+export const SET_COMMENTS = 'SET_COMMENTS';
+export const APPEND_COMMENTS = 'APPEND_COMMENTS';
