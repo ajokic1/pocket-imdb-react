@@ -57,7 +57,7 @@ class Register extends Component {
 
 const mapStateToProps = state => {
   return {
-    registerError: state.error.registerError
+    registerError: state.errors.registerError
   };
 };
 

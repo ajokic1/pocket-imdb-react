@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MovieCard from "../component/MovieCard";
+import { SINGLE_MOVIE } from "../constants/routes";
 import Card from "./Card";
 
 function MovieList({ movies, page }) {
@@ -9,7 +10,7 @@ function MovieList({ movies, page }) {
       <Link
         key={movie.id}
         className="text-dark text-decoration-none"
-        to={`/movies/${page}/${movie.id}`}
+        to={SINGLE_MOVIE.replace(':id', movie.id)}
       >
         <Card>
           <MovieCard movie={movie} />

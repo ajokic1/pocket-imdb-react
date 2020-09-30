@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
 import Likes from "./Likes";
+=======
+import Loader from "./Loader";
+>>>>>>> master
 
 function MovieInfo({ movie }) {
   if (!movie) return <div />;
@@ -15,12 +19,7 @@ function MovieInfo({ movie }) {
     <>
       <h1>{movie.title}</h1>
       <h3>{movie.genre}</h3>
-      <div className="mb-3">
-        <span className="text-muted">Viewed {movie.visits} times</span>
-      </div>
-      <div>
-        <Likes movie={movie} />
-      </div>
+      <div><Likes movie={movie} /></div>
       <div className="mt-5 d-flex flex-row">
         <div>
           <img
