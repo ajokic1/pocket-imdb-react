@@ -8,6 +8,7 @@ import {
   registerError,
 } from "../actions/AuthActions";
 import AuthService from "../../services/AuthService";
+import { LOGIN } from "../../constants/routes";
 
 export function* userLogin({ payload }) {
   try {
@@ -26,7 +27,7 @@ export function* userLogout() {
     yield call(AuthService.logout);
 
     yield put(authUser(false));
-    yield put(push("/login"));
+    yield put(push(LOGIN));
     yield put(go());
   } catch (error) {
     yield put(logoutError(true));
@@ -37,7 +38,7 @@ export function* userRegister({ payload }) {
   try {
     yield call(AuthService.signup, payload);
 
-    yield put(push("/login"));
+    yield put(push(LOGIN));
     yield put(go());
   } catch (error) {
     yield put(registerError(true));

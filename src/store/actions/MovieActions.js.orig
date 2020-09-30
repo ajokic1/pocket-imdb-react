@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   GET_MOVIE,
   SEARCH_MOVIES,
@@ -6,8 +7,10 @@ import {
   SET_MOVIES,
   RATE_MOVIE,
   UPDATE_MOVIE,
-  SEARCH_MOVIES,
 } from "./ActionTypes";
+=======
+import { GET_MOVIES, SEARCH_MOVIES, SET_LOADING, SET_MOVIES } from "./ActionTypes";
+>>>>>>> master
 
 export const getMovies = (page) => {
   return {
@@ -35,6 +38,7 @@ export const setLoading = (payload) => {
     type: SET_LOADING,
     payload,
   };
+<<<<<<< HEAD
 };
 
 export const getMovie = (payload) => {
@@ -57,3 +61,6 @@ export const rateMovie = (id, value) => {
     payload: { id, value },
   };
 };
+=======
+};
+>>>>>>> master

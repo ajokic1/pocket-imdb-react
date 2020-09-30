@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
 import Likes from "./Likes";
+=======
+import Loader from "./Loader";
+>>>>>>> master
 
 function MovieInfo({ movie }) {
   if (!movie) return <div />;
