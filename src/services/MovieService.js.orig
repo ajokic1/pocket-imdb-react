@@ -1,11 +1,13 @@
 import ApiService from './ApiService';
 
 const ENDPOINTS = {
+  MOVIES: '/api/movies',
 <<<<<<< HEAD
-  MOVIES: '/api/movies?page=:page',
-  MOVIE: '/api/movies/:id',
+  LIKE: '/api/movies/:id/like',
+  DISLIKE: '/api/movies/:id/dislike',
+  UNLIKE: '/api/movies/:id/unlike',
 =======
-  MOVIES: '/api/movies'
+  MOVIE: '/api/movies/:id',
 >>>>>>> master
 };
 
@@ -14,8 +16,17 @@ class MovieService extends ApiService {
     return this.apiClient.get(ENDPOINTS.MOVIES, { params });
   };
 
+<<<<<<< HEAD
+  rate = (id, value) => {
+    let endpoint;
+    if (value === 1) endpoint = ENDPOINTS.LIKE;
+    else if (value === 0) endpoint = ENDPOINTS.UNLIKE;
+    else endpoint = ENDPOINTS.DISLIKE;
+    return this.apiClient.post(endpoint.replace(':id', id));
+=======
   getMovie = (id) => {
     return this.apiClient.get(ENDPOINTS.MOVIE.replace(":id", id));
+>>>>>>> master
   }
 }
 

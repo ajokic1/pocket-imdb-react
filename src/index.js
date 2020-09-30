@@ -5,6 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import S from "string";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import "@fortawesome/fontawesome-free/css/all.min.css"
 
 S.extendPrototype();
 
