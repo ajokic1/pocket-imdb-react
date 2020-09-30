@@ -1,9 +1,25 @@
-import { GET_MOVIE, GET_MOVIES, SET_LOADING, SET_MOVIES, FILTER_MOVIES } from "./ActionTypes";
+import {
+  GET_MOVIE,
+  SEARCH_MOVIES,
+  GET_MOVIES,
+  SET_LOADING,
+  SET_MOVIES,
+  RATE_MOVIE,
+  UPDATE_MOVIE,
+  SEARCH_MOVIES,
+} from "./ActionTypes";
 
-export const getMovies = page => {
+export const getMovies = (page) => {
   return {
     type: GET_MOVIES,
     payload: page,
+  };
+};
+
+export const searchMovies = (search) => {
+  return {
+    type: SEARCH_MOVIES,
+    payload: search,
   };
 };
 
@@ -28,9 +44,16 @@ export const getMovie = (payload) => {
   };
 };
 
-export const filterMovies = filters => {
+export const updateMovie = (payload) => {
   return {
-    type: FILTER_MOVIES,
-    payload: filters
-  }
-}
+    type: UPDATE_MOVIE,
+    payload,
+  };
+};
+
+export const rateMovie = (id, value) => {
+  return {
+    type: RATE_MOVIE,
+    payload: { id, value },
+  };
+};

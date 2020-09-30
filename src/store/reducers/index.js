@@ -5,12 +5,13 @@ import authReducer from './AuthReducer';
 import errorReducer from './ErrorReducer';
 import movieReducer from './MovieReducer';
 import genreReducer from './GenreReducer';
+import singleMovieReducer from './SingleMovieReducer';
 
 export default history =>
   combineReducers({
     authUser: authReducer,
-    error: errorReducer,
-    movie: movieReducer,
-    genre: genreReducer,
+    movie: singleMovieReducer,
+    errors: errorReducer,
+    movies: movieReducer,
     router: connectRouter(history)
   });
