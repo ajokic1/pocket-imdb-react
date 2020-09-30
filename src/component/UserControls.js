@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../store/actions/AuthActions";
+import { LOGIN, REGISTER } from "../constants/routes";
 
 function UserControls({ user, logOut }) { 
   const loggedIn = (
@@ -15,10 +16,10 @@ function UserControls({ user, logOut }) {
 
   const notLoggedIn = (
     <span>
-      <Link to="/login" className="btn btn-outline-light mr-3" type="button">
+      <Link to={LOGIN} className="btn btn-outline-light mr-3" type="button">
         Log in
       </Link>
-      <Link to="/register" className="btn btn-outline-light" type="button">
+      <Link to={REGISTER} className="btn btn-outline-light" type="button">
         Register
       </Link>
     </span>

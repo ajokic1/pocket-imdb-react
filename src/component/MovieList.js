@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MovieCard from "../component/MovieCard";
+import { SINGLE_MOVIE } from "../constants/routes";
 import Card from "./Card";
 
-function MovieList({ movies }) {
+function MovieList({ movies, page }) {
   const renderMovies = () => {
     return movies.map((movie) => (
       <Link
-        key={movie.id} 
+        key={movie.id}
         className="text-dark text-decoration-none"
-        to={`/movie/${movie.id}`}
+        to={SINGLE_MOVIE.replace(':id', movie.id)}
       >
         <Card>
           <MovieCard movie={movie} />

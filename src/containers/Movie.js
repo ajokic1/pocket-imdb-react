@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import MovieInfo from "../component/MovieInfo";
+import { getMovie } from "../store/actions/SingleMovieActions";
+import SidebarLayout from "../component/SidebarLayout";
+import RelatedMovies from "../component/RelatedMovies";
 
-function Movie({ movie }) {
-  return <div>Movie</div>;
+function Movie({ movie, getMovie, match }) {
+  useEffect(() => {
+    getMovie(match.params.id);
+  }, []);
+
+  return (
+    <SidebarLayout
+      left={() => <MovieInfo movie={movie} />}
+      sidebarContents={() => <RelatedMovies />}
+    />
+  );
 }
 
-export default Movie;
+const mapStateToProps = (state) => {
+  return {
+    movie: state.movie,
+  };
+};
+
+const mapDispatchToProps = {
+  getMovie,
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Movie));

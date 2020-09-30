@@ -1,8 +1,12 @@
 import ApiService from './ApiService';
 
 const ENDPOINTS = {
-  MOVIES: '/api/movies',
+<<<<<<< HEAD
+  MOVIES: '/api/movies?page=:page',
   MOVIE: '/api/movies/:id',
+=======
+  MOVIES: '/api/movies'
+>>>>>>> master
 };
 
 class MovieService extends ApiService {
