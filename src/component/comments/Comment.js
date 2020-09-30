@@ -3,9 +3,9 @@ import React from "react";
 function Comment({ comment }) {
   return (
     <div className="mb-3">
-      <p>
+      <div>
         <strong>{comment.user.name}</strong>
-      </p>
+      </div>
       <p>{comment.content}</p>
     </div>
   );

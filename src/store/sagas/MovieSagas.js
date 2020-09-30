@@ -6,7 +6,6 @@ export function* moviesGet({ payload }) {
   try {
     yield put(setLoading(true));
     const filters = yield select(state => state.movies.filters);
-    console.log(filters);
     const { data } = yield call(movieService.getMovies, { page: payload, ...filters });
 
     yield put(setMovies(data));

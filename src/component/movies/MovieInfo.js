@@ -1,6 +1,7 @@
 import React from "react";
-import Likes from "./Likes";
-import Loader from "./Loader";
+import Comments from "../comments/Comments";
+import Likes from "../Likes";
+import Loader from "../Loader";
 
 function MovieInfo({ movie }) {
   if (!movie) return <div />;
@@ -35,7 +36,8 @@ function MovieInfo({ movie }) {
         </div>
       </div>
       <div className="mt-5">
-        <h3>Comments</h3>
+        <h3 className="mb-4">Comments</h3>
+        <Comments movie={movie} />
       </div>
     </>
   );
