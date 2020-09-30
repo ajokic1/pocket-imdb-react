@@ -3,7 +3,8 @@ import ApiService from './ApiService';
 const ENDPOINTS = {
   LOGIN: '/api/auth/login',
   REGISTER: '/api/auth/register',
-  LOGOUT: '/api/auth/logout'
+  LOGOUT: '/api/auth/logout',
+  REFRESH: '/api/auth/refresh',
 };
 
 class AuthService extends ApiService {
@@ -19,9 +20,26 @@ class AuthService extends ApiService {
     if (token && user) {
       this.setAuthorizationHeader();
 
-      this.api.setUnauthorizedCallback(this.destroySession.bind(this));
+      this.api.setUnauthorizedCallback(this.retryWithRefreshedToken.bind(this));
     }
   };
+
+  async retryWithRefreshedToken(error) {
+    const originalRequest = error.config;
+    if(!originalRequest._retry) {
+      const { access_token } = await this.refreshToken();
+      originalRequest.headers['Authorization'] = 'Bearer ' + access_token;
+      return this.apiClient(originalRequest);
+    } else  {
+      this.destroySession();
+    }
+  }
+
+  async refreshToken() {
+    const { data } = await this.apiClient.post(ENDPOINTS.REFRESH);
+    this.createSession({ ...this.getUser(), ...data });
+    return data;
+  }
 
   setAuthorizationHeader = () => {
     const token = this.getToken();
