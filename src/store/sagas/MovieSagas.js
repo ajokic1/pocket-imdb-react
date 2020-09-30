@@ -26,7 +26,3 @@ export function* movieRate({ payload }) {
   yield put(updateMovie(data));
 }
 
-export function* movieVisit({ payload }) {
-  const { data } = yield call(movieService.visit, payload);
-  yield put(updateMovie(data));
-}
