@@ -1,17 +1,19 @@
 import { debounce } from "lodash";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { connect } from "react-redux";
 import { filterMovies } from "../store/actions/MovieActions";
 
 function Search({ filterMovies }) {
   const [search, setSearch] = useState("");
+
+  const debouncedFilter = useCallback(debounce(search => {
+    filterMovies({ search });
+  }, 750), [filterMovies]);
   
   function handleSearch(event) {
     const value = event.target.value
     setSearch(value);
-    (debounce(() => {
-      filterMovies({ search: value });
-    }, 750))();
+    debouncedFilter(value);
   }
 
   return (
