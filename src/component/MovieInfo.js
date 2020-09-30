@@ -1,10 +1,18 @@
 import React from "react";
+import Loader from "./Loader";
 
 function MovieInfo({ movie }) {
   if (!movie) return <div />;
 
+  if (movie.loading)
+    return (
+      <div className="text-center py-5">
+        <Loader />
+      </div>
+    );
+
   return (
-    <React.Fragment>
+    <>
       <h1>{movie.title}</h1>
       <h3>{movie.genre}</h3>
       <div>Likes/dislikes</div>
@@ -23,7 +31,7 @@ function MovieInfo({ movie }) {
       <div className="mt-5">
         <h3>Comments</h3>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 

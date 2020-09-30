@@ -49,7 +49,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    loginError: state.error.loginError
+    loginError: state.errors.loginError
   };
 };
 

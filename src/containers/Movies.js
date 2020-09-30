@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Route, Switch, withRouter } from "react-router-dom";
+import { MOVIES, SINGLE_MOVIE } from "../constants/routes";
 
 import { getMovies } from "../store/actions/MovieActions";
 import AllMovies from "./AllMovies";
@@ -13,10 +14,10 @@ function Movies({ movies, getMovies }) {
 
   return (
     <Switch>
-      <Route exact path="/movies">
+      <Route exact path={MOVIES}>
         <AllMovies movies={movies} getMovies={getMovies}/>
       </Route> 
-      <Route path="/movies/:page/:id">
+      <Route path={SINGLE_MOVIE}>
         <Movie movies={movies}/>
       </Route>
     </Switch>
@@ -25,7 +26,7 @@ function Movies({ movies, getMovies }) {
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.movie,
+    movies: state.movies,
   };
 };
 

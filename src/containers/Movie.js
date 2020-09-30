@@ -2,17 +2,13 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import MovieInfo from "../component/MovieInfo";
-import { getMovies } from "../store/actions/MovieActions";
+import { getMovie } from "../store/actions/SingleMovieActions";
 import SidebarLayout from "../component/SidebarLayout";
 import RelatedMovies from "../component/RelatedMovies";
 
-function Movie({ movies, getMovies, match }) {
-  const movie = movies
-    ? movies.data.find((movie) => movie.id == match.params.id)
-    : {};
-
+function Movie({ movie, getMovie, match }) {
   useEffect(() => {
-    getMovies(match.params.page);
+    getMovie(match.params.id);
   }, []);
 
   return (
@@ -25,12 +21,12 @@ function Movie({ movies, getMovies, match }) {
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.movie,
+    movie: state.movie,
   };
 };
 
 const mapDispatchToProps = {
-  getMovies,
+  getMovie,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Movie));

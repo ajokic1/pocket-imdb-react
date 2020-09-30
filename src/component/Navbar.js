@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { MOVIES } from "../constants/routes";
 import UserControls from "./UserControls";
 
 function Navbar() {
   return (
     <nav className="navbar py-3 navbar-expand-lg navbar-dark bg-dark">
-      <Link className="h2 text-light strong" to="/movies">
+      <Link className="h2 text-light strong" to={MOVIES}>
         <strong>PocketIMDB</strong>
       </Link>
       <button
