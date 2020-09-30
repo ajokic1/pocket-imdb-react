@@ -6,8 +6,8 @@ import { setLoading, setMovies, updateMovie } from '../actions/MovieActions';
 export function* moviesGet({ payload }) {
   try {
     yield put(setLoading(true));
-    const search = yield select(state => state.movie.search);
-    const { data } = yield call(movieService.getMovies, { page: payload, search });
+    const filters = yield select(state => state.movie.filters);
+    const { data } = yield call(movieService.getMovies, { page: payload, ...filters });
 
     yield put(setMovies(data));
     yield put(setLoading(false));
@@ -17,8 +17,8 @@ export function* moviesGet({ payload }) {
   }
 }
 
-export function* moviesSearch({ payload }) {
-  yield call(moviesGet, { page: 1, search: payload});
+export function* moviesFilter({ payload }) {
+  yield call(moviesGet, { payload: 1 });
 }
 
 export function* movieRate({ payload }) {
