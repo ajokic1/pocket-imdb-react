@@ -1,0 +1,7 @@
+.action-button {
+  cursor: pointer;
+}
+
+.action-button:hover {
+  opacity: 0.7;
+}

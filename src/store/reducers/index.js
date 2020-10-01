@@ -7,6 +7,7 @@ import movieReducer from './MovieReducer';
 import genreReducer from './GenreReducer';
 import singleMovieReducer from './SingleMovieReducer';
 import commentReducer from './CommentReducer';
+import watchlistReducer from './WatchlistReducer';
 
 export default history =>
   combineReducers({
@@ -16,5 +17,6 @@ export default history =>
     movies: movieReducer,
     genres: genreReducer,
     comments: commentReducer,
-    router: connectRouter(history)
+    watchlist: watchlistReducer,
+    router: connectRouter(history),
   });

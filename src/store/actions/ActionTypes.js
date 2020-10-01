@@ -15,6 +15,7 @@ export const GET_MOVIES = "GET_MOVIES";
 export const SET_MOVIES = "SET_MOVIES";
 export const SET_LOADING = "SET_LOADING";
 export const FILTER_MOVIES = "FILTER_MOVIES";
+export const SET_POPULAR = "SET_POPULAR";
 
 export const UPDATE_MOVIE = "UPDATE_MOVIE";
 export const RATE_MOVIE = "RATE_MOVIE";
@@ -29,3 +30,11 @@ export const SET_COMMENTS = "SET_COMMENTS";
 export const APPEND_COMMENTS = "APPEND_COMMENTS";
 export const SET_COMMENT_LOADING = "SET_COMMENT_LOADING";
 export const ADD_COMMENT = "ADD_COMMENT";
+
+export const ADD_WATCHLIST = "ADD_WATCHLIST";
+export const REMOVE_WATCHLIST = "REMOVE_WATCHLIST";
+export const GET_WATCHLIST = "GET_WATCHLIST";
+export const SET_WATCHLIST = "SET_WATCHLIST";
+export const SET_WATCHED = "WATCHED_WATCHLIST";
+
+

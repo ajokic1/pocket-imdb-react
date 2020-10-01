@@ -2,6 +2,7 @@ import React from "react";
 import Comments from "../comments/Comments";
 import Likes from "../Likes";
 import Loader from "../Loader";
+import WatchlistActions from "./WatchlistActions";
 
 function MovieInfo({ movie }) {
   if (!movie) return <div />;
@@ -15,15 +16,20 @@ function MovieInfo({ movie }) {
 
   return (
     <>
-      <h1>{movie.title}</h1>
+      <div>
+        <div>
+          <small className="text-muted">Viewed {movie.visits} times</small>
+        </div>
+        <h1>{movie.title}</h1>
+        <span className="float-right">
+          <WatchlistActions movie={movie} />
+        </span>
+      </div>
       <h3>{movie.genre}</h3>
       <div className="mb-3">
-        <span className="text-muted">Viewed {movie.visits} times</span>
-      </div>
-      <div>
         <Likes movie={movie} />
       </div>
-      <div className="mt-5 d-flex flex-row">
+      <div className="d-flex flex-row">
         <div>
           <img
             style={{ objectFit: "cover", width: "16rem", height: "16rem" }}

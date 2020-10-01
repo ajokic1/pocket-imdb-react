@@ -1,4 +1,4 @@
-import { FILTER_MOVIES, SET_LOADING, SET_MOVIES, UPDATE_MOVIE } from '../actions/ActionTypes';
+import { FILTER_MOVIES, SET_LOADING, SET_MOVIES, SET_POPULAR, UPDATE_MOVIE } from '../actions/ActionTypes';
 
 const initialState = {
   loading: false,
@@ -6,7 +6,8 @@ const initialState = {
   current_page: 1,
   last_page: 1,
   total: 0,
-  data: []
+  data: [],
+  popular: [],
 };
 const movieReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -18,8 +19,10 @@ const movieReducer = (state = initialState, action) => {
       return { ...state, filters: { ...state.filters, ...action.payload } }
     case UPDATE_MOVIE:
       const newData = state.data.map(movie => 
-        movie.id == action.payload.id ? action.payload : movie);
+        movie.id == action.payload.id ? { ...movie, ...action.payload } : movie);
       return { ...state, data: newData };
+    case SET_POPULAR:
+      return { ...state, popular: action.payload }
     default:
       return state;
   }

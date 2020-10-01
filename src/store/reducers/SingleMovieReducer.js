@@ -1,7 +1,8 @@
-import { SET_MOVIE, SET_MOVIE_LOADING } from "../actions/ActionTypes";
+import { SET_MOVIE, SET_MOVIE_LOADING, UPDATE_MOVIE } from "../actions/ActionTypes";
 
 const initialState = {
   loading: false,
+  related: [],
 };
 
 const singleMovieReducer = (state = initialState, action) => {
@@ -10,6 +11,8 @@ const singleMovieReducer = (state = initialState, action) => {
       return { ...state, ...action.payload };
     case SET_MOVIE_LOADING:
       return { ...state, loading: action.payload };
+    case UPDATE_MOVIE:
+      return { ...state, ...action.payload };
     default:
       return state;
   }

@@ -1,37 +1,24 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Route, Switch, withRouter } from "react-router-dom";
-import { MOVIES, SINGLE_MOVIE } from "../constants/routes";
-
-import { getMovies } from "../store/actions/MovieActions";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { MOVIES, SINGLE_MOVIE, WATCHLIST } from "../constants/routes";
 import AllMovies from "./AllMovies";
 import Movie from "./Movie";
+import Watchlist from "./Watchlist";
 
-function Movies({ movies, getMovies }) {
-  useEffect(() => {
-    getMovies();
-  }, []);
-
+function Movies() {
   return (
     <Switch>
       <Route exact path={MOVIES}>
-        <AllMovies movies={movies} getMovies={getMovies}/>
+        <AllMovies/>
+      </Route>
+      <Route path={WATCHLIST}>
+        <Watchlist />
       </Route> 
       <Route path={SINGLE_MOVIE}>
-        <Movie movies={movies}/>
+        <Movie/>
       </Route>
     </Switch>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    movies: state.movies,
-  };
-};
-
-const mapDispatchToProps = {
-  getMovies,
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Movies));
+export default Movies;
