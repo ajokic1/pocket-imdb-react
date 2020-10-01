@@ -6,6 +6,7 @@ const ENDPOINTS = {
   DISLIKE: "/api/movies/:id/dislike",
   UNLIKE: "/api/movies/:id/unlike",
   MOVIE: "/api/movies/:id",
+  POPULAR: "/api/movies/popular",
 };
 
 class MovieService extends ApiService {
@@ -25,6 +26,10 @@ class MovieService extends ApiService {
   getMovie = (id) => {
     return this.apiClient.get(ENDPOINTS.MOVIE.replace(":id", id));
   };
+
+  getPopular = () => {
+    return this.apiClient.get(ENDPOINTS.POPULAR);
+  }
 }
 
 export const movieService = new MovieService();

@@ -15,6 +15,7 @@ export const GET_MOVIES = "GET_MOVIES";
 export const SET_MOVIES = "SET_MOVIES";
 export const SET_LOADING = "SET_LOADING";
 export const FILTER_MOVIES = "FILTER_MOVIES";
+export const SET_POPULAR = "SET_POPULAR";
 
 export const UPDATE_MOVIE = "UPDATE_MOVIE";
 export const RATE_MOVIE = "RATE_MOVIE";
