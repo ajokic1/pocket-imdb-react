@@ -7,10 +7,10 @@ export function* commentsGet({ payload }) {
     yield put(setLoading(true));
     const { data } = yield call(commentService.getComments, payload, 1);
     yield put(setComments(data));
-    yield put(setLoading(false));
   } catch (error) {
-    yield put(setLoading(false));
     console.log({ error }); /*eslint-disable-line*/
+  } finally {
+    yield put(setLoading(false));
   }
 }
 
@@ -20,10 +20,10 @@ export function* commentsLoadMore({ payload }) {
     const current_page = yield select(state => state.comments.current_page);
     const { data } = yield call(commentService.getComments, payload, current_page + 1);
     yield put(appendComments(data));
-    yield put(setLoading(false));
   } catch (error) {
-    yield put(setLoading(false));
     console.log({ error }); /*eslint-disable-line*/
+  } finally {
+    yield put(setLoading(false));
   }
 }
 
