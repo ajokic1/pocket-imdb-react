@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MOVIES } from "../constants/routes";
+import { MOVIES, WATCHLIST } from "../constants/routes";
 import UserControls from "./UserControls";
 import Search from "./Search";
 
@@ -23,12 +23,23 @@ function Navbar() {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto"></ul>
+        <ul className="navbar-nav ml-3 mr-auto h4">
+          <li class="nav-item">
+            <Link class="nav-link" to={MOVIES}>
+              Movies
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" to={WATCHLIST}>
+              Watchlist
+            </Link>
+          </li>
+        </ul>
         <div>
           <div className="text-light mb-3 text-right">
             <UserControls />
           </div>
-          <Search/>
+          <Search />
         </div>
       </div>
     </nav>

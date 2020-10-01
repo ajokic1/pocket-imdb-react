@@ -18,7 +18,7 @@ const movieReducer = (state = initialState, action) => {
       return { ...state, filters: { ...state.filters, ...action.payload } }
     case UPDATE_MOVIE:
       const newData = state.data.map(movie => 
-        movie.id == action.payload.id ? action.payload : movie);
+        movie.id == action.payload.id ? { ...movie, ...action.payload } : movie);
       return { ...state, data: newData };
     default:
       return state;

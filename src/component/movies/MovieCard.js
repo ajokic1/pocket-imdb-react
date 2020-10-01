@@ -1,7 +1,7 @@
 import React from "react";
 import Likes from "../Likes";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, actions }) => {
   return (
     <div className="d-flex flex-row">
       <div>
@@ -22,6 +22,7 @@ const MovieCard = ({ movie }) => {
         <div>
           <span className="text-muted">
             <small>Viewed {movie.visits} times</small>
+            <span className="float-right">{actions(movie)}</span>
           </span>
         </div>
       </div>

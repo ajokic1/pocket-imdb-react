@@ -1,6 +1,7 @@
 import { call, put, select } from 'redux-saga/effects';
 import { movieService } from '../../services/MovieService';
 import { setLoading, setMovies, updateMovie } from '../actions/MovieActions';
+import { getWatchlist } from '../actions/WatchlistActions';
 
 export function* moviesGet({ payload }) {
   try {
@@ -23,5 +24,6 @@ export function* moviesFilter({ payload }) {
 export function* movieRate({ payload }) {
   const { data } = yield call(movieService.rate, payload.id, payload.value);
   yield put(updateMovie(data));
+  yield put(getWatchlist());
 }
 

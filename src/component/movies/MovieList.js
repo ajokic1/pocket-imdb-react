@@ -4,7 +4,7 @@ import MovieCard from "./MovieCard";
 import { SINGLE_MOVIE } from "../../constants/routes";
 import Card from "../Card";
 
-function MovieList({ movies, page }) {
+function MovieList({ movies, actions }) {
   const renderMovies = () => {
     return movies.map((movie) => (
       <Link
@@ -13,7 +13,7 @@ function MovieList({ movies, page }) {
         to={SINGLE_MOVIE.replace(":id", movie.id)}
       >
         <Card>
-          <MovieCard movie={movie} />
+          <MovieCard movie={movie} actions={actions} />
         </Card>
       </Link>
     ));
