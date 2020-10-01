@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MOVIES, WATCHLIST } from "../constants/routes";
+import { CREATE_MOVIE, MOVIES, WATCHLIST } from "../constants/routes";
 import UserControls from "./UserControls";
 import Search from "./Search";
 
@@ -32,6 +32,11 @@ function Navbar() {
           <li class="nav-item">
             <Link class="nav-link" to={WATCHLIST}>
               Watchlist
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" to={CREATE_MOVIE}>
+              Create
             </Link>
           </li>
         </ul>
