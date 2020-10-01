@@ -2,31 +2,31 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { rateMovie } from "../store/actions/MovieActions";
+import { LIKE, DISLIKE, UNLIKE } from "../constants";
 
 function Likes({ movie, rateMovie }) {
   function handleLike(event) {
     event.preventDefault();
-    if (movie.like_value === 1) rateMovie(movie.id, 0);
-    else rateMovie(movie.id, 1);
+    rateMovie(movie.id, movie.like_value === LIKE ? UNLIKE : LIKE );
+    
   }
 
   function handleDislike(event) {
     event.preventDefault();
-    if (movie.like_value === -1) rateMovie(movie.id, 0);
-    else rateMovie(movie.id, -1);
+    rateMovie(movie.id, movie.like_value === DISLIKE ? UNLIKE : DISLIKE );
   }
 
   const likeStyle = {
     cursor: "pointer",
-    fontWeight: movie.like_value === 1 ? "bold" : "normal",
-    color: movie.like_value === 1 ? "#0275d8" : "gray",
+    fontWeight: movie.like_value === LIKE ? "bold" : "normal",
+    color: movie.like_value === LIKE ? "#0275d8" : "gray",
   };
 
   const dislikeStyle = {
     cursor: "pointer",
     marginLeft: "1rem",
-    fontWeight: movie.like_value === -1 ? "bold" : "normal",
-    color: movie.like_value === -1 ? "#d9534f" : "gray",
+    fontWeight: movie.like_value === DISLIKE ? "bold" : "normal",
+    color: movie.like_value === DISLIKE ? "#d9534f" : "gray",
   };
 
   return (
@@ -34,7 +34,7 @@ function Likes({ movie, rateMovie }) {
       <span onClick={handleLike} style={likeStyle}>
         <i
           className={
-            (movie.like_value === 1 ? "fas" : "far") + " fa-thumbs-up mr-2"
+            (movie.like_value === LIKE ? "fas" : "far") + " fa-thumbs-up mr-2"
           }
         ></i>
         {movie.likes}
@@ -42,7 +42,7 @@ function Likes({ movie, rateMovie }) {
       <span onClick={handleDislike} style={dislikeStyle}>
         <i
           className={
-            (movie.like_value === -1 ? "fas" : "far") + " fa-thumbs-down mr-2"
+            (movie.like_value === DISLIKE ? "fas" : "far") + " fa-thumbs-down mr-2"
           }
         ></i>
         {movie.dislikes}
