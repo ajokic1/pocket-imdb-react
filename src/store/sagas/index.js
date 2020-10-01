@@ -8,10 +8,14 @@ import {
   FILTER_MOVIES,
   RATE_MOVIE,
   GET_MOVIE,
+  GET_COMMENTS,
+  LOAD_MORE_COMMENTS,
+  ADD_COMMENT,
 } from "../actions/ActionTypes";
 import { userLogin, userRegister, userLogout } from "./AuthSagas";
 import { movieGet } from "./SingleMovieSagas";
 import { moviesFilter, moviesGet, movieRate } from "./MovieSagas";
+import { commentsAdd, commentsGet, commentsLoadMore } from "./CommentSagas";
 import { genresGet } from "./GenreSagas";
 
 export default function* rootSaga() {
@@ -24,5 +28,8 @@ export default function* rootSaga() {
     takeLatest(RATE_MOVIE, movieRate),
     takeLatest(GET_GENRES, genresGet),
     takeLatest(FILTER_MOVIES, moviesFilter),
+    takeLatest(GET_COMMENTS, commentsGet),
+    takeLatest(LOAD_MORE_COMMENTS, commentsLoadMore),
+    takeLatest(ADD_COMMENT, commentsAdd),
   ]);
 }

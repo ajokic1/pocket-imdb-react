@@ -1,9 +1,9 @@
 import React from "react";
 import Loader from "../component/Loader";
 import Filters from "../component/Filters";
-import MovieList from "../component/MovieList";
+import MovieList from "../component/movies/MovieList";
 import PaginationControl from "../component/PaginationControl";
-import PopularMovies from "../component/PopularMovies";
+import PopularMovies from "../component/movies/PopularMovies";
 import SidebarLayout from "../component/SidebarLayout";
 
 function AllMovies({ movies, getMovies }) {
