@@ -30,6 +30,15 @@ class MovieService extends ApiService {
   getPopular = () => {
     return this.apiClient.get(ENDPOINTS.POPULAR);
   }
+
+  create = async (data) => {
+    try {
+      await this.apiClient.post(ENDPOINTS.MOVIES, data);
+      return { done: true } 
+    } catch (error) {
+      return { errors: [error.message] }
+    }
+  }
 }
 
 export const movieService = new MovieService();
