@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { MOVIES } from "../../constants/routes";
 import useFormFields from "../../hooks/FormFieldsHook";
@@ -6,11 +7,14 @@ import { movieService } from "../../services/MovieService";
 import Errors from "../Errors";
 import Form from "../Form";
 
-function CreateMovie() {
+function CreateMovie({ genres }) {
+  const genre_values = genres.map(genre => ({ value: genre.id, caption: genre.name }));
+
   const formFields = useFormFields({
     title: { required: true, max: 255 },
     description: { required: true, rows: 5 },
     image_url: { required: true },
+    genre_id: { required: true, values: genre_values }
   });
 
   const [status, setStatus] = useState({ done: false, errors: [] });
@@ -41,4 +45,10 @@ function CreateMovie() {
   );
 }
 
-export default CreateMovie;
+const mapStateToProps = (state) => {
+  return {
+    genres: state.genres,
+  };
+};
+
+export default connect(mapStateToProps)(CreateMovie);
