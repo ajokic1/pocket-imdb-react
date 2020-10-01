@@ -9,9 +9,9 @@ export function* movieGet({ payload }) {
     const { data } = yield call(movieService.getMovie, payload);
 
     yield put(setMovie(data));
-    yield put(setMovieLoading(false));
   } catch (error) {
-    yield put(setMovieLoading(false));
     console.log({ error }); /*eslint-disable-line*/
+  } finally {
+    yield put(setMovieLoading(false));
   }
 }
