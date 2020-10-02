@@ -1,4 +1,5 @@
 import { debounce } from "lodash";
+import config from "../config";
 import ApiService from "./ApiService";
 
 const ENDPOINTS = {
@@ -10,8 +11,7 @@ const debouncedSearch = debounce((search, callback) => {
     const response = await fetch(
       ENDPOINTS.OMDB +
         new URLSearchParams({
-          i: "tt3896198",
-          apikey: "932e18e0",
+          apikey: config.OMDB_KEY,
           type: "movie",
           s: search,
         })
@@ -38,8 +38,7 @@ class OmdbService extends ApiService {
     const response = await fetch(
       ENDPOINTS.OMDB +
         new URLSearchParams({
-          i: "tt3896198",
-          apikey: "932e18e0",
+          apikey: config.OMDB_KEY,
           type: "movie",
           t: title,
           plot: "full",
