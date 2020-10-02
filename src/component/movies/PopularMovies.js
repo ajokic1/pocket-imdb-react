@@ -1,17 +1,26 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { SINGLE_MOVIE } from "../../constants/routes";
 
-function PopularMovies() {
+function PopularMovies({ popular }) {
+  const popularLinks = popular.map((movie) => (
+    <p>
+      <Link to={SINGLE_MOVIE.replace(":id", movie.id)}>{movie.title}</Link>
+    </p>
+  ));
+
   return (
     <>
       <h4 className="mb-4">Popular movies</h4>
-      <p>Movie 1</p>
-      <p>Movie 2</p>
-      <p>Movie 3</p>
-      <p>Movie 4</p>
-      <p>Movie 5</p>
-      <p>Movie 6</p>
+      {popularLinks}
     </>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    popular: state.movies.popular,
+  };
+};
 
-export default PopularMovies;
+export default connect(mapStateToProps)(PopularMovies);

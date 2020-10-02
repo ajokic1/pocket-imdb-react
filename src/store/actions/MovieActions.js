@@ -6,6 +6,7 @@ import {
   RATE_MOVIE,
   UPDATE_MOVIE,
   FILTER_MOVIES,
+  SET_POPULAR,
 } from "./ActionTypes";
 
 export const getMovies = (page) => {
@@ -54,5 +55,12 @@ export const filterMovies = filters => {
   return {
     type: FILTER_MOVIES,
     payload: filters
-  }
-}
+  };
+};
+
+export const setPopular = payload => {
+  return {
+    type: SET_POPULAR,
+    payload
+  };
+};
