@@ -34,6 +34,8 @@ function useFormFields(config) {
   function createSelectHandler(fieldName) {
     return (value) => {
       updateFormField(fieldName, { value });
+      if(formFields[fieldName].selectHandler)
+        formFields[fieldName].selectHandler(value);
     };
   }
 
@@ -84,7 +86,6 @@ function useFormFields(config) {
       } else {
         values[fieldName] = field.value;
       }
-      
     }
     return values;
   }
