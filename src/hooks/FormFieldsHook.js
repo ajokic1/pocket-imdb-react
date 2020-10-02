@@ -20,9 +20,9 @@ function useFormFields(config) {
 
   const changeHandlers = {};
   for (const fieldName in config) {
-    if (config[fieldName].values)
-      changeHandlers[fieldName] = createSelectHandler(fieldName);
-    else changeHandlers[fieldName] = createChangeHandler(fieldName);
+    changeHandlers[fieldName] = config[fieldName].values
+      ? createSelectHandler(fieldName)
+      : createChangeHandler(fieldName);
   }
 
   function createChangeHandler(fieldName) {
@@ -78,13 +78,12 @@ function useFormFields(config) {
     for (const fieldName in formFields) {
       const field = formFields[fieldName];
       if (field.multi && field.value) {
-        values[fieldName] = field.value.map(option => option.value);
+        values[fieldName] = field.value.map((option) => option.value);
       } else if (field.values && field.value) {
         values[fieldName] = field.value.value;
       } else {
         values[fieldName] = field.value;
       }
-      
     }
     return values;
   }
