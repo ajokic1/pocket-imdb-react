@@ -25,7 +25,7 @@ function MovieInfo({ movie }) {
           <WatchlistActions movie={movie} />
         </span>
       </div>
-      <h3>{movie.genre}</h3>
+      <div className="mb-3">{movie.genre_names.join(', ')}</div>
       <div className="mb-3">
         <Likes movie={movie} />
       </div>
