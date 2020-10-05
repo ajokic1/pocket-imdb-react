@@ -20,7 +20,7 @@ function useFormFields(config) {
 
   const changeHandlers = {};
   for (const fieldName in config) {
-    if (config[fieldName].values)
+    if (config[fieldName].values || config[fieldName].type === 'file')
       changeHandlers[fieldName] = createSelectHandler(fieldName);
     else changeHandlers[fieldName] = createChangeHandler(fieldName);
   }
@@ -38,6 +38,7 @@ function useFormFields(config) {
         formFields[fieldName].selectHandler(value);
     };
   }
+
 
   function updateFormField(fieldName, newKeyValuePair) {
     setFormFields((previousState) => {

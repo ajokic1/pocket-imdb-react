@@ -2,6 +2,7 @@ import React from "react";
 import Errors from "./Errors";
 import Select from "react-select";
 import AsyncSelect from "react-select/async";
+import FileInput from "./FileInput";
 
 function FormField({
   name,
@@ -12,10 +13,10 @@ function FormField({
   values,
   errors,
   onChange,
-  onInputChange=() => {},
-  inputValue=value,
+  onInputChange = () => {},
+  inputValue = value,
   rows,
-  multi=false,
+  multi = false,
   loadOptions,
   ...rest
 }) {
@@ -55,7 +56,7 @@ function FormField({
         className={`basic${multi && "-multi"}-select`}
         classNamePrefix="select"
         value={value}
-        onChange={onChange} 
+        onChange={onChange}
       />
     );
   }
@@ -68,6 +69,18 @@ function FormField({
         className={"form-control " + inputClassName}
         id={name.camelize().s}
         rows={rows}
+      />
+    );
+  }
+
+  if (type === "file") {
+    field = (
+      <FileInput
+        value={value}
+        onChange={onChange}
+        className={"form-control " + inputClassName}
+        id={name.camelize().s}
+        name={name}
       />
     );
   }

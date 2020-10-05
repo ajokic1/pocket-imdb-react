@@ -33,7 +33,7 @@ function MovieInfo({ movie }) {
         <div>
           <img
             style={{ objectFit: "cover", width: "16rem", height: "16rem" }}
-            src={movie.image_url}
+            src={movie.image && movie.image.full_url}
             alt="movie cover"
           />
         </div>
