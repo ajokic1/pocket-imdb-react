@@ -1,5 +1,6 @@
 import React from "react";
 import Errors from "./Errors";
+import Select from "react-select";
 
 function FormField({
   name,
@@ -11,6 +12,7 @@ function FormField({
   errors,
   onChange,
   rows,
+  multi=false,
   ...rest
 }) {
   let field = (
@@ -24,21 +26,17 @@ function FormField({
       onChange={onChange}
     />
   );
-
   if (values) {
     field = (
-      <select
-        className={"form-control " + inputClassName}
-        id={name.camelize().s}
+      <Select
+        isMulti={multi}
+        name={name}
+        options={values}
+        className="basic-multi-select"
+        classNamePrefix="select"
         value={value}
         onChange={onChange}
-      >
-        {values.map((value) => (
-          <option key={value.value} value={value.value}>
-            {value.caption}
-          </option>
-        ))}
-      </select>
+      />
     );
   }
 

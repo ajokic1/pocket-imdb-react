@@ -20,12 +20,20 @@ function useFormFields(config) {
 
   const changeHandlers = {};
   for (const fieldName in config) {
-    changeHandlers[fieldName] = createChangeHandler(fieldName);
+    changeHandlers[fieldName] = config[fieldName].values
+      ? createSelectHandler(fieldName)
+      : createChangeHandler(fieldName);
   }
 
   function createChangeHandler(fieldName) {
     return (event) => {
       updateFormField(fieldName, { value: event.target.value });
+    };
+  }
+
+  function createSelectHandler(fieldName) {
+    return (value) => {
+      updateFormField(fieldName, { value });
     };
   }
 
@@ -68,7 +76,14 @@ function useFormFields(config) {
   function getFieldValues() {
     const values = {};
     for (const fieldName in formFields) {
-      values[fieldName] = formFields[fieldName].value;
+      const field = formFields[fieldName];
+      if (field.multi && field.value) {
+        values[fieldName] = field.value.map((option) => option.value);
+      } else if (field.values && field.value) {
+        values[fieldName] = field.value.value;
+      } else {
+        values[fieldName] = field.value;
+      }
     }
     return values;
   }
@@ -85,6 +100,7 @@ function useFormFields(config) {
     data: getFieldValues(),
     validateFields,
     setFieldValues,
+    updateFormField,
   };
 }
 

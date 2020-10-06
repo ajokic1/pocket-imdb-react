@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { MOVIES } from "../../constants/routes";
@@ -6,16 +6,28 @@ import useFormFields from "../../hooks/FormFieldsHook";
 import { movieService } from "../../services/MovieService";
 import Errors from "../Errors";
 import Form from "../Form";
+import { getGenres } from "../../store/actions/GenreActions";
 
-function CreateMovie({ genres }) {
-  const genre_values = genres.map(genre => ({ value: genre.id, caption: genre.name }));
+function CreateMovie({ genres, getGenres }) {
+  useEffect(() => {
+    if (genres.length === 0) getGenres();
+  }, []);
+
+  const genre_values = genres.map((genre) => ({
+    value: genre.id,
+    label: genre.name,
+  }));
 
   const formFields = useFormFields({
     title: { required: true, max: 255 },
     description: { required: true, rows: 5 },
     image_url: { required: true },
-    genre_id: { required: true, values: genre_values }
+    genres: { required: true, values: genre_values, multi: true },
   });
+
+  useEffect(() => {
+    formFields.updateFormField("genres", { values: genre_values });
+  }, [genres])
 
   const [status, setStatus] = useState({ done: false, errors: [] });
 
@@ -51,4 +63,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(CreateMovie);
+const mapDispatchToProps = {
+  getGenres,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateMovie);

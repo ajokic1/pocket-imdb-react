@@ -15,13 +15,8 @@ function Form({
       <FormField
         key={formFieldName}
         name={formFieldName}
-        value={formField.value}
-        errors={formField.errors}
         onChange={changeHandlers[formFieldName]}
-        required={formField.required}
-        type={formField.type}
-        values={formField.values}
-        rows={formField.rows}
+        {...formField}
       />
     );
   });

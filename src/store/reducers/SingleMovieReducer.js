@@ -3,6 +3,7 @@ import { SET_MOVIE, SET_MOVIE_LOADING, UPDATE_MOVIE } from "../actions/ActionTyp
 const initialState = {
   loading: false,
   related: [],
+  genre_names: [],
 };
 
 const singleMovieReducer = (state = initialState, action) => {
