@@ -18,17 +18,12 @@ function WatchlistActions({
     removeFromWatchlist(movie.id);
   }
 
-  function handleSetWatched(event) {
+  function handleSetWatched(event, watched) {
     event.preventDefault();
-    setWatched(movie.id, true);
+    setWatched(movie.id, watched);
   }
 
-  function handleSetNotWatched(event) {
-    event.preventDefault();
-    setWatched(movie.id, false);
-  }
-
-  function handleAddToWatchlist(event, movie) {
+  function handleAddToWatchlist(event) {
     event.preventDefault();
     addToWatchlist(movie.id);
   }
@@ -40,21 +35,22 @@ function WatchlistActions({
           <i className="fas fa-minus mr-2"></i>Remove from watchlist
         </span>
         <span className="ml-3 action-button">
-          {movie.watched ? (
-            <strong className="text-primary" onClick={handleSetNotWatched}>
-              <i className="fas fa-tv mr-2"></i>Watched
-            </strong>
-          ) : (
-            <span onClick={handleSetWatched}>
-              <i className="fas fa-tv mr-2"></i>Not watched
-            </span>
-          )}
+          <span
+            className={movie.watched && "text-primary font-weight-bold"}
+            onClick={(event) => handleSetWatched(event, !movie.watched)}
+          >
+            <i className="fas fa-tv mr-2"></i>
+            {movie.watched ? "Watched" : "Not watched"}
+          </span>
         </span>
       </>
     );
 
   return (
-    <span className="action-button" onClick={(event) => handleAddToWatchlist(event, movie)}>
+    <span
+      className="action-button"
+      onClick={handleAddToWatchlist}
+    >
       <i className="fas fa-plus mr-2"></i>Add to watchlist
     </span>
   );
