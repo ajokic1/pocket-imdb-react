@@ -9,7 +9,7 @@ export function* moviesGet({ payload }) {
     const filters = yield select(state => state.movies.filters);
     const { data } = yield call(movieService.getMovies, { page: payload, ...filters });
     yield put(setMovies(data));
-
+    
     const popular = yield call(movieService.getPopular);
     yield put(setPopular(popular.data));
   } catch (error) {

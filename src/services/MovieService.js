@@ -1,10 +1,11 @@
 import ApiService from "./ApiService";
+import { LIKE, DISLIKE, UNLIKE } from "../constants";
 
 const ENDPOINTS = {
   MOVIES: "/api/movies",
-  LIKE: "/api/movies/:id/like",
-  DISLIKE: "/api/movies/:id/dislike",
-  UNLIKE: "/api/movies/:id/unlike",
+  [LIKE.toString()]: "/api/movies/:id/like",
+  [DISLIKE.toString()]: "/api/movies/:id/dislike",
+  [UNLIKE.toString()]: "/api/movies/:id/unlike",
   MOVIE: "/api/movies/:id",
   POPULAR: "/api/movies/popular",
 };
@@ -15,12 +16,7 @@ class MovieService extends ApiService {
   };
 
   rate = (id, value) => {
-    let endpoint;
-    if (value === 1) endpoint = ENDPOINTS.LIKE;
-    else if (value === 0) endpoint = ENDPOINTS.UNLIKE;
-    else endpoint = ENDPOINTS.DISLIKE;
-
-    return this.apiClient.post(endpoint.replace(":id", id));
+    return this.apiClient.post(ENDPOINTS[value].replace(":id", id));
   };
 
   getMovie = (id) => {
