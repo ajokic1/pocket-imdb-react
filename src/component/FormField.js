@@ -1,6 +1,7 @@
 import React from "react";
 import Errors from "./Errors";
 import Select from "react-select";
+import AsyncSelect from "react-select/async";
 
 function FormField({
   name,
@@ -11,8 +12,11 @@ function FormField({
   values,
   errors,
   onChange,
+  onInputChange=() => {},
+  inputValue=value,
   rows,
   multi=false,
+  loadOptions,
   ...rest
 }) {
   let field = (
@@ -32,10 +36,26 @@ function FormField({
         isMulti={multi}
         name={name}
         options={values}
-        className="basic-multi-select"
+        className={`basic${multi && "-multi"}-select`}
         classNamePrefix="select"
         value={value}
         onChange={onChange}
+      />
+    );
+  }
+
+  if (loadOptions) {
+    field = (
+      <AsyncSelect
+        cacheOptions
+        defaultOptions={values ? values : []}
+        isMulti={multi}
+        name={name}
+        loadOptions={loadOptions}
+        className={`basic${multi && "-multi"}-select`}
+        classNamePrefix="select"
+        value={value}
+        onChange={onChange} 
       />
     );
   }

@@ -7,6 +7,7 @@ import { movieService } from "../../services/MovieService";
 import Errors from "../Errors";
 import Form from "../Form";
 import { getGenres } from "../../store/actions/GenreActions";
+import { omdbService } from "../../services/OmdbService";
 
 function CreateMovie({ genres, getGenres }) {
   useEffect(() => {
@@ -14,16 +15,27 @@ function CreateMovie({ genres, getGenres }) {
   }, []);
 
   const genre_values = genres.map((genre) => ({
-    value: genre.id,
+    value: genre.name,
     label: genre.name,
   }));
 
   const formFields = useFormFields({
-    title: { required: true, max: 255 },
+    title: { required: true, max: 255, values: [], loadOptions: omdbService.searchMovies, selectHandler: selectMovieHandler },
     description: { required: true, rows: 5 },
     image_url: { required: true },
     genres: { required: true, values: genre_values, multi: true },
   });
+
+  function getGenreValues(genreString) {
+    return genreString.split(", ").map( genre => ({value: genre, label: genre}));
+  }
+
+  async function selectMovieHandler(value) {
+    const movie = await omdbService.getMovie(value.value);
+    formFields.updateFormField("description", {value: movie.Plot});
+    formFields.updateFormField("image_url", {value: movie.Poster});
+    formFields.updateFormField("genres", { value: getGenreValues(movie.Genre) });
+  }
 
   useEffect(() => {
     formFields.updateFormField("genres", { values: genre_values });
