@@ -2,7 +2,7 @@ import React from "react";
 
 const FileInput = ({ value, onChange = () => {}, ...rest }) => (
   <div>
-    {Boolean(value.length) && (
+    {!!value.length && (
       <div>Selected files: {value.map((f) => f.name).join(", ")}</div>
     )}
     <label>
