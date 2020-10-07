@@ -22,8 +22,9 @@ function CreateMovie({ genres, getGenres }) {
   const formFields = useFormFields({
     title: { required: true, max: 255, values: [], loadOptions: omdbService.searchMovies, selectHandler: selectMovieHandler },
     description: { required: true, rows: 5 },
-    image_url: { required: true },
     genres: { required: true, values: genre_values, multi: true },
+    image_url: {},
+    image: { type: 'file' }
   });
 
   function getGenreValues(genreString) {

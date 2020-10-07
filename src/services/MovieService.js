@@ -29,7 +29,15 @@ class MovieService extends ApiService {
 
   create = async (data) => {
     try {
-      await this.apiClient.post(ENDPOINTS.MOVIES, data);
+      const formData = new FormData();
+      formData.append('title', data.title)
+      formData.append('description', data.description)
+      data.genres.map(genre => formData.append('genres[]', genre))
+      formData.append('image_url', data.image_url)
+      formData.append('image', data.image[0])
+      await this.apiClient.post(ENDPOINTS.MOVIES, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
       return { done: true } 
     } catch (error) {
       return { errors: [error.message] }

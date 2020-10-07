@@ -7,7 +7,7 @@ const MovieCard = ({ movie, actions }) => {
       <div>
         <img
           style={{ objectFit: "cover", width: "8rem", height: "8rem" }}
-          src={movie.image_url}
+          src={movie.image && movie.image.thumbnail_url}
           alt="movie cover"
         />
       </div>
