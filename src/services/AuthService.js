@@ -1,4 +1,5 @@
 import ApiService from './ApiService';
+import Echo from "./EchoService";
 
 const ENDPOINTS = {
   LOGIN: '/api/auth/login',
@@ -47,6 +48,7 @@ class AuthService extends ApiService {
       this.api.attachHeaders({
         Authorization: `Bearer ${token}`
       });
+      Echo.connector.options.auth.headers['Authorization'] = 'Bearer ' + token;
     }
   };
 
@@ -58,6 +60,7 @@ class AuthService extends ApiService {
   destroySession = () => {
     localStorage.clear();
     this.api.removeHeaders(['Authorization']);
+    Echo.connector.options.auth.headers['Authorization'] = null;
   };
 
   login = async loginData => {

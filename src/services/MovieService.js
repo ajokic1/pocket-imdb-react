@@ -1,4 +1,5 @@
 import ApiService from "./ApiService";
+import EchoService from "./EchoService";
 
 const ENDPOINTS = {
   MOVIES: "/api/movies",
@@ -46,6 +47,16 @@ class MovieService extends ApiService {
     } catch (error) {
       return { errors: [error.message] }
     }
+  }
+
+  listenLikes(movieId, updateMovie) {
+    EchoService.private(`movies.${movieId}.likes`).listen("NewLikeEvent", (movie) => {
+      updateMovie(movie);
+    });
+  }
+
+  leaveLikes(movieId) {
+    if (movieId) EchoService.leave(`movies.${movieId}.likes`)
   }
 }
 

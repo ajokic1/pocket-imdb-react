@@ -6,9 +6,11 @@ import {
   getComments,
   loadMoreComments,
   addComment,
+  appendComments,
 } from "../../store/actions/CommentActions";
 import Comment from "./Comment";
 import AddComment from "./AddComment";
+import { commentService } from "../../services/CommentService";
 
 function Comments({
   movie,
@@ -16,9 +18,16 @@ function Comments({
   comments,
   getComments,
   loadMoreComments,
+  appendComments,
 }) {
   useEffect(() => {
-    if (movie.id) getComments(movie.id);
+    if (movie.id) {
+      getComments(movie.id);
+      commentService.listen(movie.id, appendComments);
+    }
+    return () => {
+      commentService.leave(movie.id);
+    };
   }, [movie]);
 
   function loadMore() {
@@ -59,6 +68,7 @@ const mapDispatchToProps = {
   getComments,
   loadMoreComments,
   addComment,
+  appendComments,
 };
 
 export default withRouter(

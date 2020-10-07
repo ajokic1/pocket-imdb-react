@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { rateMovie } from "../store/actions/MovieActions";
+import { movieService } from "../services/MovieService";
+import { rateMovie, updateMovie } from "../store/actions/MovieActions";
 
-function Likes({ movie, rateMovie }) {
+function Likes({ movie, rateMovie, updateMovie }) {
+  useEffect(() => {
+    if (movie.id) {
+      movieService.listenLikes(movie.id, updateMovie);
+    }
+    return () => {
+      movieService.leaveLikes(movie.id);
+    }
+  }, [movie]);
+  
   function handleLike(event) {
     event.preventDefault();
     if (movie.like_value === 1) rateMovie(movie.id, 0);
@@ -53,6 +63,7 @@ function Likes({ movie, rateMovie }) {
 
 const mapDispatchToProps = {
   rateMovie,
+  updateMovie,
 };
 
 export default withRouter(connect(null, mapDispatchToProps)(Likes));

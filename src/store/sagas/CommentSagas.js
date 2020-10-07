@@ -30,7 +30,6 @@ export function* commentsLoadMore({ payload }) {
 export function* commentsAdd({ payload }) {
   try {
     const { data } = yield call(commentService.addComment, payload);
-    yield put(appendComments({ data: [ data ] }));
   } catch (error) {
     console.log(error);
   }
