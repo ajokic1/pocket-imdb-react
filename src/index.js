@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import S from "string";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
+import boot from "./bootstrap";
 
-S.extendPrototype();
+boot();
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
