@@ -7,7 +7,7 @@ function Search({ filterMovies }) {
   const [search, setSearch] = useState("");
 
   const debouncedFilter = useCallback(debounce(search => {
-    filterMovies({ search });
+    filterMovies({ title: search });
   }, 750), [filterMovies]);
   
   function handleSearch(event) {
